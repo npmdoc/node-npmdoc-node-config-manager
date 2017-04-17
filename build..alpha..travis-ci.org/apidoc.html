@@ -1,0 +1,311 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/Valko54/node-config-manager#readme"
+
+    >node-config-manager (v1.2.0)</a>
+</h1>
+<h4>A configuration manager for NodeJS. It helps you to organize your project and the different configurations of your environments.</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager">module node-config-manager</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">node-config-manager.</span>camelCase</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.FileManager">
+            function <span class="apidocSignatureSpan">node-config-manager.</span>FileManager
+            <span class="apidocSignatureSpan">(configDir, env)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>FileManager.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>method</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>store</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">node-config-manager.</span>configDir</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">node-config-manager.</span>env</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager.FileManager">module node-config-manager.FileManager</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.FileManager.FileManager">
+            function <span class="apidocSignatureSpan">node-config-manager.</span>FileManager
+            <span class="apidocSignatureSpan">(configDir, env)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager.FileManager.prototype">module node-config-manager.FileManager.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.FileManager.prototype.getFile">
+            function <span class="apidocSignatureSpan">node-config-manager.FileManager.prototype.</span>getFile
+            <span class="apidocSignatureSpan">(name, justDefault)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.FileManager.prototype.loadFile">
+            function <span class="apidocSignatureSpan">node-config-manager.FileManager.prototype.</span>loadFile
+            <span class="apidocSignatureSpan">(_path)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager" id="apidoc.module.node-config-manager">module node-config-manager</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.FileManager" id="apidoc.element.node-config-manager.FileManager">
+        function <span class="apidocSignatureSpan">node-config-manager.</span>FileManager
+        <span class="apidocSignatureSpan">(configDir, env)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileManager(configDir, env) {
+    if (arguments.length !== 2 ||
+        &#x27;string&#x27; !== typeof configDir ||
+        &#x27;string&#x27; !== typeof env) {
+        throw new Error(error.BAD_PARAMETER);
+    }
+
+    debug(&#x27;Create FileManager object to %s and %s/%s&#x27;, configDir, configDir, env);
+
+    this.configDir = configDir;
+    this.env = env;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager.FileManager" id="apidoc.module.node-config-manager.FileManager">module node-config-manager.FileManager</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.FileManager.FileManager" id="apidoc.element.node-config-manager.FileManager.FileManager">
+        function <span class="apidocSignatureSpan">node-config-manager.</span>FileManager
+        <span class="apidocSignatureSpan">(configDir, env)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileManager(configDir, env) {
+    if (arguments.length !== 2 ||
+        &#x27;string&#x27; !== typeof configDir ||
+        &#x27;string&#x27; !== typeof env) {
+        throw new Error(error.BAD_PARAMETER);
+    }
+
+    debug(&#x27;Create FileManager object to %s and %s/%s&#x27;, configDir, configDir, env);
+
+    this.configDir = configDir;
+    this.env = env;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager.FileManager.prototype" id="apidoc.module.node-config-manager.FileManager.prototype">module node-config-manager.FileManager.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.FileManager.prototype.getFile" id="apidoc.element.node-config-manager.FileManager.prototype.getFile">
+        function <span class="apidocSignatureSpan">node-config-manager.FileManager.prototype.</span>getFile
+        <span class="apidocSignatureSpan">(name, justDefault)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getFile = function (name, justDefault) {
+    var self = this,
+        content = null,
+        lookup = function (dir, file) {
+            var i, filepath, find = false;
+            for (i = 0; i &#x3c; EXTENSION_AVAILABLE.length &#x26;&#x26; find !== true; i++) {
+                filepath = path.resolve(dir + &#x27;/&#x27; + file + EXTENSION_AVAILABLE[i]);
+                debug(&#x27;Lookup the config file : %s&#x27;, filepath);
+                find = fs.existsSync(filepath);
+            }
+
+            if (find) {
+                return self.loadFile(filepath);
+            } else {
+                return null;
+            }
+        };
+
+    justDefault = justDefault || false;
+
+    if (!justDefault) {
+        //Lookup the file in env folder
+        content = lookup(path.resolve(this.configDir + &#x27;/&#x27; + this.env), name);
+    }
+
+    //Return result or lookup the file in config folder
+    return content ? content : lookup(path.resolve(this.configDir), name);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.FileManager.prototype.loadFile" id="apidoc.element.node-config-manager.FileManager.prototype.loadFile">
+        function <span class="apidocSignatureSpan">node-config-manager.FileManager.prototype.</span>loadFile
+        <span class="apidocSignatureSpan">(_path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">loadFile = function (_path) {
+    var ext = path.extname(_path);
+
+    switch (ext) {
+        case &#x27;.js&#x27;:
+        case &#x27;.json&#x27;:
+            return _require(_path);
+        case &#x27;.yaml&#x27;:
+        case &#x27;.yml&#x27;:
+            try {
+                return yaml.safeLoad(fs.readFileSync(_path, &#x27;utf8&#x27;));
+            } catch (e) {
+                throw new Error(e);
+            }
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        for (i = 0; i &#x3c; EXTENSION_AVAILABLE.length &#x26;&#x26; find !== true; i++) {
+            filepath = path.resolve(dir + &#x27;/&#x27; + file + EXTENSION_AVAILABLE[i]);
+            debug(&#x27;Lookup the config file : %s&#x27;, filepath);
+            find = fs.existsSync(filepath);
+        }
+
+        if (find) {
+            return self.<span class="apidocCodeKeywordSpan">loadFile</span>(filepath);
+        } else {
+            return null;
+        }
+    };
+
+justDefault = justDefault || false;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
