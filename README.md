@@ -1,4 +1,7 @@
-# api documentation for  [node-config-manager (v1.2.0)](https://github.com/Valko54/node-config-manager#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-config-manager.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-config-manager) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-config-manager.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-config-manager)
+# npmdoc-node-config-manager
+
+#### basic api documentation for  [node-config-manager (v1.2.0)](https://github.com/Valko54/node-config-manager#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-node-config-manager.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-config-manager) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-config-manager.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-config-manager)
+
 #### A configuration manager for NodeJS. It helps you to organize your project and the different configurations of your environments.
 
 [![NPM](https://nodei.co/npm/node-config-manager.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/node-config-manager)
@@ -80,7 +83,8 @@
         "test": "NODE_ENV='test' ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test",
         "test-on-travis": "NODE_ENV='test' ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
     },
-    "version": "1.2.0"
+    "version": "1.2.0",
+    "bin": {}
 }
 ```
 
