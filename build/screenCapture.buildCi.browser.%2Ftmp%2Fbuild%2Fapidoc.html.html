@@ -77,7 +77,25 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>array</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>method</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>object</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-config-manager.</span>parameter</span>
 
         </li>
 
@@ -136,6 +154,72 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager.array">module node-config-manager.array</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.array.contains">
+            function <span class="apidocSignatureSpan">node-config-manager.array.</span>contains
+            <span class="apidocSignatureSpan">(a, obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager.object">module node-config-manager.object</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.object.extend">
+            function <span class="apidocSignatureSpan">node-config-manager.object.</span>extend
+            <span class="apidocSignatureSpan">(target, source)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.object.isEmpty">
+            function <span class="apidocSignatureSpan">node-config-manager.object.</span>isEmpty
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-config-manager.parameter">module node-config-manager.parameter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.parameter.convertStrArrayToString">
+            function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>convertStrArrayToString
+            <span class="apidocSignatureSpan">(strArray, camelCase)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.parameter.parse">
+            function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>parse
+            <span class="apidocSignatureSpan">(json, camelCase)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-config-manager.parameter.processTag">
+            function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>processTag
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -165,6 +249,12 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
+
+
+
+
 
 
 
@@ -247,7 +337,22 @@
     //Return result or lookup the file in config folder
     return content ? content : lookup(path.resolve(this.configDir), name);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (!fileManager ||
+    fileManager.configDir !== this.configDir ||
+    fileManager.env !== this.env) {
+    fileManager = new FileManager(this.configDir, this.env);
+}
+
+//Load config and defaultConfig
+var config = fileManager.<span class="apidocCodeKeywordSpan">getFile</span>(configName) || {};
+var defaultConfig = fileManager.getFile(configName, true) || {};
+
+//Load envConfig with the environment variables
+var regex = new RegExp('^' + configName.toUpperCase() + '__'),
+    data = {},
+    envConfig;
+...</pre></li>
     </ul>
 
 
@@ -291,6 +396,298 @@
 
 justDefault = justDefault || false;
 ...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager.array" id="apidoc.module.node-config-manager.array">module node-config-manager.array</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.array.contains" id="apidoc.element.node-config-manager.array.contains">
+        function <span class="apidocSignatureSpan">node-config-manager.array.</span>contains
+        <span class="apidocSignatureSpan">(a, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">contains = function (a, obj) {
+	var i, length = a.length;
+	for (i = 0; i &lt; length; i++) {
+		if (a[i] === obj) {
+			return true;
+		}
+	}
+	return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @api public
+ */
+ConfigManager.prototype.get = function (key) {
+    if (arguments.length &lt; 1 || 'string' !== typeof key) {
+        throw new Error(error.BAD_PARAMETER);
+    }
+
+    if (!uArray.<span class="apidocCodeKeywordSpan">contains</span>(keys, key)) {
+        throw new Error(error.OPTION_NOT_EXISTS);
+    }
+
+    return this[key];
+};
+
+/**
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager.object" id="apidoc.module.node-config-manager.object">module node-config-manager.object</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.object.extend" id="apidoc.element.node-config-manager.object.extend">
+        function <span class="apidocSignatureSpan">node-config-manager.object.</span>extend
+        <span class="apidocSignatureSpan">(target, source)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">extend = function (target, source) {
+    target = target || {};
+    source = source || {};
+
+    for (var prop in source) {
+<span class="apidocCodeCommentSpan">        /* istanbul ignore else */
+</span>        if (source.hasOwnProperty(prop)) {
+            if (source[prop] instanceof Array) {
+                // don't edit Array object - just replace
+                target[prop] = source[prop];
+            } else if (typeof source[prop] === 'object') {
+                target[prop] = extend(target[prop], source[prop]);
+            } else {
+                target[prop] = source[prop];
+            }
+        }
+    }
+    return target;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        data[propEnv] = envArgs[propEnv];
+    }
+}
+
+envConfig = parser.parse(data, this.camelCase)[configName];
+
+//Override defaultConfig with config
+uObject.<span class="apidocCodeKeywordSpan">extend</span>(defaultConfig, config);
+config = defaultConfig;
+
+//Override config with envConfig
+uObject.extend(config, envConfig);
+
+if (!uObject.isEmpty(config)) {
+    //Add new config to store
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.object.isEmpty" id="apidoc.element.node-config-manager.object.isEmpty">
+        function <span class="apidocSignatureSpan">node-config-manager.object.</span>isEmpty
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isEmpty = function (obj) {
+    // null and undefined are "empty"
+    if (obj == null) {
+        return true;
+    }
+
+    // Assume if it has a length property with a non-zero value
+    // that that property is correct.
+    if (obj.length &gt; 0) {
+        return false;
+    }
+    if (obj.length === 0) {
+        return true;
+    }
+
+    // Otherwise, does it have any properties of its own?
+    // Note that this doesn't handle
+    // toString and valueOf enumeration bugs in IE &lt; 9
+    for (var key in obj) {
+<span class="apidocCodeCommentSpan">        /* istanbul ignore else */
+</span>        if (obj.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+
+    return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    //Override defaultConfig with config
+    uObject.extend(defaultConfig, config);
+    config = defaultConfig;
+
+    //Override config with envConfig
+    uObject.extend(config, envConfig);
+
+    if (!uObject.<span class="apidocCodeKeywordSpan">isEmpty</span>(config)) {
+//Add new config to store
+this.store[configName] = config;
+
+//Create method
+var methodName = configName.charAt(0).toUpperCase() + configName.slice(1).toLowerCase(),
+    self = this;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-config-manager.parameter" id="apidoc.module.node-config-manager.parameter">module node-config-manager.parameter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.parameter.convertStrArrayToString" id="apidoc.element.node-config-manager.parameter.convertStrArrayToString">
+        function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>convertStrArrayToString
+        <span class="apidocSignatureSpan">(strArray, camelCase)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">convertStrArrayToString = function (strArray, camelCase) {
+    var i,
+        length = strArray.length,
+        str = '';
+
+    for (i = 0; i &lt; length; i++) {
+        if (camelCase) {
+            str += (i === 0 ? strArray[i].toLowerCase() : strArray[i].charAt(0).toUpperCase() + strArray[i].slice(1).toLowerCase
+());
+        } else {
+            str += (i === 0 ? strArray[i].toLowerCase() : '_' + strArray[i].toLowerCase());
+
+        }
+    }
+
+    return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    var strArray = [
+        'ConVerT',
+        'str',
+        'aRrAy',
+        'to',
+        'STRING'
+    ];
+    var str = parserParameter.<span class="apidocCodeKeywordSpan">convertStrArrayToString</span>(strArray, true);
+    expect(str).to.equal('convertStrArrayToString');
+});
+it('should return underscore_case string', function() {
+    var strArray = [
+        'ConVerT',
+        'str',
+        'aRrAy',
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.parameter.parse" id="apidoc.element.node-config-manager.parameter.parse">
+        function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>parse
+        <span class="apidocSignatureSpan">(json, camelCase)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (json, camelCase) {
+    if ('object' !== typeof json) {
+        return null;
+    }
+
+    camelCase = camelCase || false;
+
+    //Get keys
+    var levels, value, attr, _pObject, pObject,
+        object = {},
+        keys = Object.keys(json);
+
+    keys.forEach(function(key) {
+        value = json[key];
+
+        //split levels
+        levels = key.split('__');
+
+        //Back to top
+        _pObject = pObject = object;
+        attr = null;
+
+        levels.forEach(function(level) {
+            attr = convertStrArrayToString(level.split('_'), camelCase);
+
+            //Persist
+            _pObject = pObject;
+
+            //New Object
+            pObject[attr] = pObject[attr] || {};
+            pObject = pObject[attr];
+        });
+
+        //Save value
+<span class="apidocCodeCommentSpan">        /* istanbul ignore else */
+</span>        if (_pObject &amp;&amp; attr) {
+            _pObject[attr] = validateValue(processTag(value));
+        }
+    });
+
+    return object;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+for (var propEnv in envArgs) {
+    if (envArgs.hasOwnProperty(propEnv) &amp;&amp; propEnv.match(regex)) {
+        data[propEnv] = envArgs[propEnv];
+    }
+}
+
+envConfig = parser.<span class="apidocCodeKeywordSpan">parse</span>(data, this.camelCase)[configName];
+
+//Override defaultConfig with config
+uObject.extend(defaultConfig, config);
+config = defaultConfig;
+
+//Override config with envConfig
+uObject.extend(config, envConfig);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-config-manager.parameter.processTag" id="apidoc.element.node-config-manager.parameter.processTag">
+        function <span class="apidocSignatureSpan">node-config-manager.parameter.</span>processTag
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">processTag = function (str) {
+    if ('string' !== typeof str) {
+        return str;
+    }
+
+    var tag;
+    while (str.search(tagRegex) &gt;= 0) {
+        tag = str.match(tagRegex)[0];
+        str = str.replace(tag, resolveTag(tag), 'g');
+    }
+    return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
